@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: rupp-homework-d04ba-certificate
+  namespace: rupp-homework-d04ba
+spec:
+  secretName: rupp-homework-d04ba-secret-tls
+  commonName: davin-sovann0415-rupp-homework.assessify.org
+  dnsNames:
+  - davin-sovann0415-rupp-homework.assessify.org
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
