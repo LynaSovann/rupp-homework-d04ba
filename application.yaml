@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rupp-homework-d04ba
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/LynaSovann/rupp-homework-d04ba.git
+    targetRevision: main
+    path: manifests
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: rupp-homework-d04ba
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+  revisionHistoryLimit: 5
