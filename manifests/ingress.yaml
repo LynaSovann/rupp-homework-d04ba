@@ -1,0 +1,28 @@
+ apiVersion: networking.k8s.io/v1
+ kind: Ingress
+ metadata:
+   name: rupp-homework-d04ba-https-ingress
+   namespace: rupp-homework-d04ba
+   annotations:
+     nginx.ingress.kubernetes.io/ssl-redirect: "false"
+     nginx.ingress.kubernetes.io/use-regex: "true"
+     nginx.ingress.kubernetes.io/proxy-body-size: 8m    
+     nginx.ingress.kubernetes.io/rewrite-target: /
+ spec:
+   ingressClassName: nginx
+   tls:
+     - hosts:
+         - davin-sovann0415-rupp-homework.assessify.org
+       secretName: rupp-homework-d04ba-secret-tls
+   rules:
+     - host: davin-sovann0415-rupp-homework.assessify.org
+       http:
+         paths:
+           - path: /
+             pathType: Prefix
+             backend:
+               service:
+                 name: rupp-homework-d04ba-service
+                 port:
+                   number: 8224
+ 
