@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rupp-homework-d04ba-deployment
+  labels:
+    app: rupp-homework-d04ba
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rupp-homework-d04ba
+  template:
+    metadata:
+      labels:
+        app: rupp-homework-d04ba
+    spec:
+      containers:
+        - name: rupp-homework-d04ba-container
+          image: pipejet/rupp-homework-d04ba:latest
+          ports:
+            - containerPort: 8080
